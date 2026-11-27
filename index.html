@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="CerchaCalc: calculadora de geometría y presupuestos para cerchas industriales."
+    />
+
+    <title>CerchaCalc | Calculadora de Cerchas Industriales</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>CerchaCalc</h1>
+        <p>Calculadora de Cerchas Industriales</p>
+        <p>
+          Funciones y Matrices (MVFM01) — Modelado Trigonométrico, Matricial y
+          Presupuesto
+        </p>
+      </header>
+
+      <main>
+        <div class="grid">
+          <!-- PANEL DE PARÁMETROS -->
+          <section class="card">
+            <h2>1. Parámetros de la Bodega</h2>
+
+            <div class="form-group">
+              <label for="ancho"> Ancho total de la bodega (metros) </label>
+              <input type="number" id="ancho" value="12" min="2" step="0.5" />
+            </div>
+
+            <div class="form-group">
+              <label for="angulo">
+                Ángulo de inclinación del techo (grados)
+              </label>
+              <input
+                type="number"
+                id="angulo"
+                value="20"
+                min="5"
+                max="60"
+                step="1"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="voladizo">
+                Largo del voladizo / alero por lado (metros)
+              </label>
+              <input
+                type="number"
+                id="voladizo"
+                value="0.5"
+                min="0"
+                step="0.1"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cantidad"> Cantidad total de cerchas </label>
+              <input type="number" id="cantidad" value="8" min="1" step="1" />
+            </div>
+
+            <div class="btn-row">
+              <button type="button" class="btn-primary" id="btnCalcular">
+                Calcular y Guardar
+              </button>
+
+              <button type="button" class="btn-secondary" id="btnLimpiar">
+                Limpiar Historial
+              </button>
+            </div>
+
+            <div class="matrix-box">
+              <strong>Operación Matricial (Q × P)</strong>
+              <code id="detalleMatriz"> Esperando cálculos... </code>
+            </div>
+          </section>
+
+          <!-- PANEL DE RESULTADOS -->
+          <section class="card">
+            <h2>2. Esquema Geométrico y Resultados</h2>
+
+            <div class="svg-box">
+              <svg
+                id="svgCercha"
+                width="100%"
+                height="185"
+                viewBox="0 0 420 185"
+                role="img"
+                aria-label="Representación geométrica de la cercha"
+              ></svg>
+            </div>
+
+            <div class="results-grid">
+              <div class="metric">
+                <span>Altura central h(x)</span>
+                <strong id="resAltura">-</strong>
+              </div>
+
+              <div class="metric">
+                <span>Largo viga inclinada (c/alero)</span>
+                <strong id="resViga">-</strong>
+              </div>
+
+              <div class="metric">
+                <span>Ángulos de corte (apoyo / cumbrera)</span>
+                <strong id="resAngulos">-</strong>
+              </div>
+
+              <div class="metric">
+                <span>Acero total por cercha</span>
+                <strong id="resAcero">-</strong>
+              </div>
+
+              <div class="metric">
+                <span>Costo 1 cercha (Q × P)</span>
+                <strong id="resCostoUnitario">-</strong>
+              </div>
+
+              <div class="metric">
+                <span>Presupuesto Total C(n) + flete</span>
+                <strong id="resCostoTotal">-</strong>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- HISTORIAL -->
+        <section class="card" style="margin-top: 20px">
+          <h2>3. Historial de Cotizaciones Guardadas</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Ancho (m)</th>
+                <th>Ángulo (°)</th>
+                <th>Voladizo (m)</th>
+                <th>Cerchas</th>
+                <th>Altura (m)</th>
+                <th>Presupuesto Total</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaHistorial"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <!-- Módulos JavaScript: se incorporarán progresivamente -->
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
